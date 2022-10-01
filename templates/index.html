@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>India Weather App</title><!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"><!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="col-md-6 col-md-offset-3">
+    <h1> Welcome to India Weather App </h1>
+    <h2>weather in your city</h2>
+<form method="post" action="/">
+    <input type="text" name="city" placeholder="Enter Indian city name">
+    <button type="submit">SUBMIT</button>
+</form>
+    {% if data.status==200 %}
+        <div class="col-md-6 col-md-offset-3">
+            <h2>City: {{ data.city }}</h2>
+            <h3>Temperature: {{ data.temp }} <sup>o</sup>C</h3>
+            <h3>Latitude: {{ data.latitude }}</h3>
+            <h3>Longitude: {{ data.longitude }}</h3>
+            <h3>Sunrise: {{ data.sunrise }} IST</h3>
+            <h3>Sunset: {{ data.sunset }} IST</h3>
+    {% elif data.status==404 %}
+            <h3 style="color:red"> {{ city }} not found </h3>
+            <h3 style="color:red">Please Enter valid city name</h3>
+    {% else %}
+    {% endif %}
+</div>
+</div>
+</body>
+</html>
